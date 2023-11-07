@@ -5,30 +5,37 @@ import "./index.css";
 import CategoryDetails from "./components/CategoryDetails/CategoryDetails.jsx";
 import MealDetails from "./components/MealDetails/MealDetails.jsx";
 import Categories from "./components/Categories/Categories.jsx";
+import App from "./App.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Categories></Categories>,
-    loader: () =>
-      fetch("https://www.themealdb.com/api/json/v1/1/categories.php"),
-  },
+    element: <App></App>,
+    children: [
+      {
+        path: "/",
+        element: <Categories></Categories>,
+        loader: () =>
+          fetch("https://www.themealdb.com/api/json/v1/1/categories.php"),
+      },
 
-  {
-    path: "/category/:name",
-    element: <CategoryDetails></CategoryDetails>,
-    loader: ({ params }) =>
-      fetch(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.name}`
-      ),
-  },
-  {
-    path: "/meal/:id",
-    element: <MealDetails></MealDetails>,
-    loader: ({ params }) =>
-      fetch(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`
-      ),
+      {
+        path: "/category/:name",
+        element: <CategoryDetails></CategoryDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.name}`
+          ),
+      },
+      {
+        path: "/meal/:id",
+        element: <MealDetails></MealDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`
+          ),
+      },
+    ],
   },
 ]);
 

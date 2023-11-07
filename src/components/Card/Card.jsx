@@ -10,10 +10,13 @@ const Card = ({ category, meal }) => {
           <img src={strCategoryThumb} alt={strCategory} />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{strCategory}</h2>
-          <p>{strCategoryDescription.slice(0, 50)}</p>
+          <h2 className="card-title flex-grow">{strCategory}</h2>
+
           <div className="card-actions justify-end">
-            <Link to={`/category/${strCategory}`}>
+            <Link
+              to={`/category/${strCategory}`}
+              state={strCategoryDescription}
+            >
               <button className="btn btn-primary">Details</button>
             </Link>
           </div>
@@ -24,18 +27,19 @@ const Card = ({ category, meal }) => {
   if (meal) {
     const { strMeal, strMealThumb, idMeal } = meal;
     return (
-      <div className="card bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
-          <img src={strMealThumb} alt={strMeal} className="rounded-xl" />
+      <div className="card bg-base-100 shadow-xl image-full">
+        <figure>
+          <img src={strMealThumb} alt={strMeal} />
         </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">{strMeal}</h2>
-          <div className="flex gap-5">
-            <Link to={`/meal/${idMeal}`}>
-              <button className="btn btn-primary">Details</button>
-            </Link>
+        <div className="card-body">
+          <h2 className="card-title flex-grow">{strMeal}</h2>
+
+          <div className="card-actions justify-end">
             <Link to={-1}>
               <button className="btn btn-primary">Go Back</button>
+            </Link>
+            <Link to={`/meal/${idMeal}`}>
+              <button className="btn btn-primary">Details</button>
             </Link>
           </div>
         </div>
