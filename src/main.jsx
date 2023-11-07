@@ -7,6 +7,8 @@ import MealDetails from "./components/MealDetails/MealDetails.jsx";
 import Categories from "./components/Categories/Categories.jsx";
 import App from "./App.jsx";
 import Home from "./components/Home/Home.jsx";
+import Areas from "./components/Areas/Areas.jsx";
+import MealsByArea from "./components/MealsByArea/MealsByArea.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,20 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/areas",
+        element: <Areas></Areas>,
+        loader: () =>
+          fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list"),
+      },
+      {
+        path: "/area/:areaName",
+        element: <MealsByArea></MealsByArea>,
+        loader: ({ params }) =>
+          fetch(
+            `https://www.themealdb.com/api/json/v1/1/filter.php?a=${params.areaName}`
+          ),
       },
       {
         path: "/categories",

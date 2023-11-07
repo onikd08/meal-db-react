@@ -8,7 +8,7 @@ const SearchBar = ({ setSearchTerm }) => {
           <div>
             <input
               className="input input-bordered join-item"
-              placeholder="Search"
+              placeholder="Search By Name"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
