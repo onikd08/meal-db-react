@@ -6,6 +6,7 @@ import CategoryDetails from "./components/CategoryDetails/CategoryDetails.jsx";
 import MealDetails from "./components/MealDetails/MealDetails.jsx";
 import Categories from "./components/Categories/Categories.jsx";
 import App from "./App.jsx";
+import Home from "./components/Home/Home.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/categories",
         element: <Categories></Categories>,
         loader: () =>
           fetch("https://www.themealdb.com/api/json/v1/1/categories.php"),
