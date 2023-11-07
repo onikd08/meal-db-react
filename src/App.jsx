@@ -1,9 +1,7 @@
-import Categories from "./components/Categories/Categories";
-
 function App() {
   return (
     <div className="container mx-auto">
-      <Categories></Categories>
+      <h1>This is App</h1>
     </div>
   );
 }
