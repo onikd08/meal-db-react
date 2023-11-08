@@ -1,20 +1,20 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <NavLink to="/" className="btn btn-ghost normal-case text-xl">
           MealDB
-        </Link>
+        </NavLink>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/categories">Categories</Link>
+            <NavLink to="/categories">Categories</NavLink>
           </li>
           <li>
-            <Link to="/areas">Areas</Link>
+            <NavLink to="/areas">Areas</NavLink>
           </li>
         </ul>
       </div>
